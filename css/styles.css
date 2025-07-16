@@ -99,15 +99,6 @@ body {
     gap: var(--gp-space-sm);
 }
 
-.gp-logo::before {
-    content: "";
-    width: 32px;
-    height: 32px;
-    background: var(--gp-white);
-    border-radius: var(--gp-radius-sm);
-    display: inline-block;
-}
-
 .gp-header-nav {
     display: flex;
     gap: var(--gp-space-lg);
