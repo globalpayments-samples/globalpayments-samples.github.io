@@ -3,211 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Payments - Developer Example</title>
+    <title>Global Payments Samples — Developer Portal</title>
+    <meta name="description" content="Integration samples and examples for Global Payments API Platform. Explore payment processing demos across PHP, Node.js, .NET, and Java.">
+    <link rel="icon" href="assets/img/GP_favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/portal.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="gp-header">
         <div class="gp-container">
             <div class="gp-header-content">
-                <div class="gp-logo">
+                <a href="/" class="gp-logo">
                     <picture>
-                        <source media="(min-width: 768px)" srcset="https://globalpayments-samples.github.io/assets/img/GP_logo.svg">
-                        <img src="https://globalpayments-samples.github.io/assets/img/GP_favicon.svg" alt="Global Payments" style="height: 32px; width: auto;">
+                        <source media="(min-width: 768px)" srcset="assets/img/GP_logo.svg">
+                        <img src="assets/img/GP_favicon.svg" alt="Global Payments" style="height: 32px; width: auto;">
                     </picture>
-                </div>
+                </a>
                 <nav class="gp-header-nav">
-                    <a href="https://developer.globalpay.com/">Documentation</a>
-                    <a href="https://developer.globalpay.com/api">API Reference</a>
-                    <a href="https://developer.globalpay.com/sdks">SDKs</a>
+                    <a href="https://developer.globalpay.com/home">Docs</a>
+                    <a href="https://developer.globalpay.com/api/references-overview">API Reference</a>
+                    <a href="https://developer.globalpay.com/docs/integration-options/sdk/overview">SDKs</a>
+                    <a href="https://github.com/globalpayments-samples" class="gp-button gp-button-header">GitHub</a>
                 </nav>
+                <button class="gp-mobile-menu-toggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <div class="gp-container">
-        <!-- Page Title -->
-        <h1 class="gp-page-title">SDK Integration Examples</h1>
-        <p class="gp-page-subtitle">Explore comprehensive examples of Global Payments SDK implementations across different payment scenarios.</p>
+    <section class="gp-hero">
+        <div class="gp-container">
+            <h1 class="gp-hero-title">Global Payments Samples</h1>
+            <p class="gp-hero-subtitle">Integration samples and examples for Global Payments API Platform, organized by programming language and complexity level.</p>
+            <div class="gp-hero-actions">
+                <a href="https://developer.globalpay.com/docs/getting-started/overview" class="gp-button gp-button-primary">Get Started</a>
+                <a href="#samples" class="gp-button gp-button-secondary">Browse Samples</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Tabs -->
-        <div class="gp-tabs">
-            <div class="gp-tab-list">
-                <button class="gp-tab-button active" data-tab="payment-form">Payment Form</button>
-                <button class="gp-tab-button" data-tab="tokenization">Tokenization</button>
-                <button class="gp-tab-button" data-tab="webhooks">Webhooks</button>
-                <button class="gp-tab-button" data-tab="recurring">Recurring Payments</button>
+    <section id="samples" class="gp-section">
+        <div class="gp-container">
+            <div class="gp-section-header">
+                <h2 class="gp-section-title">Integration Samples</h2>
+                <p class="gp-section-subtitle">Production-ready examples with multi-language backends, Docker support, and one-click cloud previews.</p>
             </div>
 
-            <!-- Payment Form Tab -->
-            <div class="gp-tab-content active" id="payment-form">
-                <div class="gp-card">
-                    <div class="gp-card-header">
-                        <h2 class="gp-card-title">Credit Card Payment Form</h2>
-                        <p class="gp-card-description">
-                            Secure payment processing using Global Payments tokenization with client-side form validation.
-                        </p>
-                    </div>
-                    
-                    <form id="payment-form" class="gp-form" action="/process-payment.php" method="POST">
-                        <div class="gp-form-group">
-                            <label for="amount" class="gp-label">Amount ($):</label>
-                            <input type="number" id="amount" name="amount" class="gp-input" min="0.01" step="0.01" value="10.00" required>
-                        </div>
-                        
-                        <div class="gp-form-group">
-                            <label for="billing_zip" class="gp-label">Billing Zip Code:</label>
-                            <input type="text" id="billing_zip" name="billing_zip" class="gp-input" placeholder="12345" required>
-                        </div>
+            <div class="gp-filters">
+                <button class="gp-filter-button active" data-filter="all">All</button>
+                <button class="gp-filter-button" data-filter="gp-api">GP-API</button>
+                <button class="gp-filter-button" data-filter="portico">Portico</button>
+                <button class="gp-filter-button" data-filter="gpecom">GP Ecomm</button>
+                <button class="gp-filter-button" data-filter="tools">Tools</button>
+            </div>
 
-                        <div class="gp-form-group">
-                            <label class="gp-label">Credit Card Information:</label>
-                            <div id="credit-card"></div>
-                        </div>
+            <div id="gp-project-grid" class="gp-project-grid"></div>
 
-                        <button type="submit" class="gp-button gp-button-primary gp-button-full">
-                            Process Payment
-                        </button>
-                    </form>
+            <p class="gp-project-count" id="project-count"></p>
+        </div>
+    </section>
+
+    <section class="gp-section gp-section-alt">
+        <div class="gp-container">
+            <div class="gp-section-header">
+                <h2 class="gp-section-title">Every Sample Includes</h2>
+            </div>
+            <div class="gp-features-grid">
+                <div class="gp-feature-card">
+                    <div class="gp-feature-icon">&#x1f4e6;</div>
+                    <h3>Multi-Language Backends</h3>
+                    <p>PHP, Node.js, .NET, and Java implementations sharing a single frontend.</p>
                 </div>
-            </div>
-
-            <!-- Tokenization Tab -->
-            <div class="gp-tab-content" id="tokenization">
-                <div class="gp-card">
-                    <div class="gp-card-header">
-                        <h2 class="gp-card-title">Card Tokenization</h2>
-                        <p class="gp-card-description">
-                            Securely tokenize payment methods for future use without storing sensitive card data.
-                        </p>
-                    </div>
-                    
-                    <div class="gp-alert gp-alert-info">
-                        <strong>Info:</strong> Tokens can be stored securely and used for future transactions without handling raw card data.
-                    </div>
-
-                    <form id="tokenization-form" class="gp-form">
-                        <div class="gp-form-group">
-                            <label class="gp-label">Card Information for Tokenization:</label>
-                            <div id="credit-card-token"></div>
-                        </div>
-
-                        <button type="submit" class="gp-button gp-button-primary gp-button-full">
-                            Generate Token
-                        </button>
-                    </form>
-
-                    <div id="token-result" class="gp-hidden">
-                        <h3 class="gp-card-title gp-mt-lg">Generated Token:</h3>
-                        <div class="gp-code-block" id="token-display"></div>
-                    </div>
+                <div class="gp-feature-card">
+                    <div class="gp-feature-icon">&#x1f433;</div>
+                    <h3>Docker Support</h3>
+                    <p>docker-compose.yml with per-language services for instant local setup.</p>
                 </div>
-            </div>
-
-            <!-- Webhooks Tab -->
-            <div class="gp-tab-content" id="webhooks">
-                <div class="gp-card">
-                    <div class="gp-card-header">
-                        <h2 class="gp-card-title">Webhook Integration</h2>
-                        <p class="gp-card-description">
-                            Configure and test webhook endpoints for real-time payment notifications.
-                        </p>
-                    </div>
-                    
-                    <div class="gp-code-block">
-// Example webhook handler
-app.post('/webhook', (req, res) => {
-    const signature = req.headers['x-gp-signature'];
-    const payload = req.body;
-    
-    // Verify webhook signature
-    if (verifySignature(payload, signature)) {
-        handlePaymentEvent(payload);
-        res.status(200).send('OK');
-    } else {
-        res.status(400).send('Invalid signature');
-    }
-});
-                    </div>
-
-                    <div class="gp-alert gp-alert-warning">
-                        <strong>Security:</strong> Always verify webhook signatures to ensure requests are from Global Payments.
-                    </div>
+                <div class="gp-feature-card">
+                    <div class="gp-feature-icon">&#x2601;</div>
+                    <h3>Cloud Previews</h3>
+                    <p>CodeSandbox and DevContainer configs for one-click cloud development.</p>
                 </div>
-            </div>
-
-            <!-- Recurring Payments Tab -->
-            <div class="gp-tab-content" id="recurring">
-                <div class="gp-card">
-                    <div class="gp-card-header">
-                        <h2 class="gp-card-title">Recurring Payments</h2>
-                        <p class="gp-card-description">
-                            Set up subscription billing and recurring payment schedules.
-                        </p>
-                    </div>
-                    
-                    <form id="recurring-form" class="gp-form">
-                        <div class="gp-form-row">
-                            <div class="gp-form-group">
-                                <label for="subscription-amount" class="gp-label">Monthly Amount ($):</label>
-                                <input type="number" id="subscription-amount" name="subscription-amount" class="gp-input" min="1.00" step="0.01" value="29.99" required>
-                            </div>
-                            
-                            <div class="gp-form-group">
-                                <label for="billing-cycle" class="gp-label">Billing Cycle:</label>
-                                <select id="billing-cycle" name="billing-cycle" class="gp-select" required>
-                                    <option value="monthly">Monthly</option>
-                                    <option value="quarterly">Quarterly</option>
-                                    <option value="annually">Annually</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="gp-form-group">
-                            <label class="gp-label">Payment Method:</label>
-                            <div id="credit-card-recurring"></div>
-                        </div>
-
-                        <button type="submit" class="gp-button gp-button-primary gp-button-full">
-                            Set Up Subscription
-                        </button>
-                    </form>
+                <div class="gp-feature-card">
+                    <div class="gp-feature-icon">&#x1f512;</div>
+                    <h3>Sandbox-Ready</h3>
+                    <p>Pre-configured for Global Payments sandbox environment with .env.sample files.</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <!-- 
-        DEVELOPER NOTE: Update the following footer information to match your business:
-        - Company name and copyright year
-        - Update all links to point to your actual Terms of Service, Privacy Policy, and Refund Policy pages
-        - Refund Policy link is typically required by payment processor underwriting in addition to Terms and Privacy
-        - Ensure all linked policies are accessible and up-to-date before going live
-    -->
+    <section class="gp-section">
+        <div class="gp-container">
+            <div class="gp-section-header">
+                <h2 class="gp-section-title">Developer Community</h2>
+                <p class="gp-section-subtitle">Join our developer community and stay up to date with the latest news from the Global Payments team.</p>
+            </div>
+            <div class="gp-community-grid">
+                <a href="https://github.com/orgs/globalpayments/discussions" class="gp-community-link">
+                    <strong>GitHub Discussions</strong>
+                    <span>Ask questions and share ideas</span>
+                </a>
+                <a href="https://discord.gg/myER9G9qkc" class="gp-community-link">
+                    <strong>Discord</strong>
+                    <span>Chat with the team in real-time</span>
+                </a>
+                <a href="https://developer.globalpay.com/blog/overview" class="gp-community-link">
+                    <strong>Developer Blog</strong>
+                    <span>Tutorials, guides, and announcements</span>
+                </a>
+                <a href="https://www.linkedin.com/showcase/global-payments-for-developers/" class="gp-community-link">
+                    <strong>LinkedIn</strong>
+                    <span>Follow for updates and events</span>
+                </a>
+                <a href="https://youtube.com/playlist?list=PLYOhsY1Babga_03fc9FcGIWqagCHEyxY0&si=H4YgJYez6VMxLE68" class="gp-community-link">
+                    <strong>YouTube</strong>
+                    <span>Video tutorials and walkthroughs</span>
+                </a>
+            </div>
+            <p class="gp-text-center gp-mt-lg">
+                Have a suggestion? <a href="mailto:communityexperience@globalpay.com?subject=Global%20Payments%20Developer%20Community%20Feedback">Email us your feedback</a>.
+            </p>
+        </div>
+    </section>
+
     <footer class="gp-footer">
         <div class="gp-container">
             <div class="gp-footer-content">
                 <div class="gp-footer-section">
-                    <p class="gp-footer-copyright">
-                        © 2024 Your Company Name. All rights reserved.
-                    </p>
+                    <a href="https://www.globalpayments.com" class="gp-footer-logo">
+                        <img src="assets/img/GP_logo.svg" alt="Global Payments" style="height: 24px; width: auto; filter: brightness(0) invert(1);">
+                    </a>
                 </div>
                 <div class="gp-footer-section">
                     <nav class="gp-footer-nav">
-                        <a href="/terms-of-service" class="gp-footer-link">Terms of Service</a>
-                        <a href="/privacy-policy" class="gp-footer-link">Privacy Policy</a>
-                        <a href="/refund-policy" class="gp-footer-link">Refund Policy</a>
+                        <a href="https://developer.globalpay.com/home" class="gp-footer-link">Documentation</a>
+                        <a href="https://github.com/globalpayments" class="gp-footer-link">SDKs &amp; Plugins</a>
+                        <a href="https://github.com/globalpayments-samples" class="gp-footer-link">Sample Projects</a>
                     </nav>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="js/projects.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/portal.js"></script>
 </body>
 </html>
