@@ -42,7 +42,7 @@ function renderProjects(projects) {
 }
 
 function initFilters() {
-  const buttons = document.querySelectorAll('.gp-filter-btn');
+  const buttons = document.querySelectorAll('.gp-filter-button');
   const grid = document.getElementById('gp-project-grid');
   if (!buttons.length || !grid) return;
 
@@ -63,7 +63,8 @@ function initFilters() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Run immediately since script loads at end of </body> (DOM is ready)
+if (typeof GP_PROJECTS !== 'undefined') {
   renderProjects(GP_PROJECTS);
   initFilters();
-});
+}
