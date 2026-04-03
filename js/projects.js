@@ -64,7 +64,7 @@ const GP_PROJECTS = [
     repo_name: "wallet-management",
     url: "https://github.com/globalpayments-samples/wallet-management",
     category: "gp-api",
-    description: "Digital wallet payment management for GP-API. Process Apple Pay and Google Pay transactions with token handling and payment method storage.",
+    description: "Secure wallet management for storing and managing payment methods using multi-use tokens. Store tokenized customer payment information across multiple programming languages.",
     languages: ["php", "nodejs", "java", "dotnet"],
     language_labels: ["PHP", "Node.js", "Java", ".NET"],
     feature_tags: ["wallets"]
@@ -184,7 +184,7 @@ const GP_PROJECTS = [
     repo_name: "portico-wallet-management",
     url: "https://github.com/globalpayments-samples/portico-wallet-management",
     category: "portico",
-    description: "Digital wallet (Apple Pay & Google Pay) management for the Portico Gateway. End-to-end wallet token processing with Portico-specific configuration.",
+    description: "Wallet management for the Portico Gateway. Store and manage payment methods using multi-use tokens with customer data integration.",
     languages: ["php", "nodejs", "java", "dotnet", "go"],
     language_labels: ["PHP", "Node.js", "Java", ".NET", "Go"],
     feature_tags: ["wallets"]
@@ -248,15 +248,5 @@ const GP_PROJECTS = [
     languages: ["php"],
     language_labels: ["PHP"],
     feature_tags: ["avs", "card-verification", "reporting"]
-  },
-  {
-    title: "Starter Template",
-    repo_name: "starter-template",
-    url: "https://github.com/globalpayments-samples/starter-template",
-    category: "tools",
-    description: "Customizable multi-language starter scaffold for Global Payments SDK integration. Foundation for new payment projects with configuration management and placeholder endpoints.",
-    languages: ["php", "nodejs", "java", "dotnet", "python", "go"],
-    language_labels: ["PHP", "Node.js", "Java", ".NET", "Python", "Go"],
-    feature_tags: []
   }
 ];
