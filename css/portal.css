@@ -269,6 +269,30 @@
     color: #512bd4;
 }
 
+.gp-lang-python {
+    background: rgba(55, 118, 171, 0.15);
+    color: #1d5791;
+}
+
+.gp-lang-go {
+    background: rgba(0, 173, 216, 0.15);
+    color: #006b8f;
+}
+
+/* ===== Card Link ===== */
+.gp-project-card-link {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gp-global-blue);
+    margin-top: var(--gp-space-md);
+    text-decoration: none;
+}
+
+.gp-project-card:hover .gp-project-card-link {
+    text-decoration: underline;
+}
+
 /* ===== Features Grid ===== */
 .gp-features-grid {
     display: grid;

@@ -1,43 +1,34 @@
-// Portal JavaScript — gateway filter, mobile nav, project count
+// Portal JavaScript — mobile nav toggle and project count display
 (function () {
   'use strict';
 
-  // Gateway filter
-  const filterButtons = document.querySelectorAll('.gp-filter-button');
-  const projectCards = document.querySelectorAll('.gp-project-card');
-  const projectCount = document.getElementById('project-count');
+  // Project count — runs after script.js has rendered cards
+  var projectCount = document.getElementById('project-count');
 
-  function updateCount(visible) {
+  function updateCount(visible, total) {
     if (projectCount) {
-      projectCount.textContent = 'Showing ' + visible + ' of ' + projectCards.length + ' samples';
+      projectCount.textContent = 'Showing ' + visible + ' of ' + total + ' samples';
     }
   }
 
-  filterButtons.forEach(function (btn) {
+  // Hook into filter clicks to keep count in sync
+  document.querySelectorAll('.gp-filter-button').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      var filter = btn.dataset.filter;
-
-      filterButtons.forEach(function (b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-
-      var visible = 0;
-      projectCards.forEach(function (card) {
-        var category = card.dataset.category;
-        var show = filter === 'all' || category === filter;
-        card.classList.toggle('hidden', !show);
-        if (show) visible++;
-      });
-
-      updateCount(visible);
+      setTimeout(function () {
+        var all     = document.querySelectorAll('.gp-project-card');
+        var visible = document.querySelectorAll('.gp-project-card:not(.gp-hidden)');
+        updateCount(visible.length, all.length);
+      }, 0);
     });
   });
 
-  // Initial count
-  updateCount(projectCards.length);
+  // Set initial count after cards are rendered
+  var all = document.querySelectorAll('.gp-project-card');
+  updateCount(all.length, all.length);
 
   // Mobile nav toggle
   var toggle = document.querySelector('.gp-mobile-menu-toggle');
-  var nav = document.querySelector('.gp-header-nav');
+  var nav    = document.querySelector('.gp-header-nav');
 
   if (toggle && nav) {
     toggle.addEventListener('click', function () {

@@ -8,14 +8,31 @@ const CATEGORY_LABELS = {
   'tools':    'Tools',
 };
 
+const BADGE_CLASS = {
+  'gp-api':   'gp-badge-gpapi',
+  'portico':  'gp-badge-portico',
+  'gpecom':   'gp-badge-gpecom',
+  'tools':    'gp-badge-tools',
+};
+
+const LANG_CLASS = {
+  'PHP':     'gp-lang-php',
+  'Node.js': 'gp-lang-node',
+  'Java':    'gp-lang-java',
+  '.NET':    'gp-lang-dotnet',
+  'Python':  'gp-lang-python',
+  'Go':      'gp-lang-go',
+};
+
 function renderProjects(projects) {
   const grid = document.getElementById('gp-project-grid');
   if (!grid) return;
 
   grid.innerHTML = projects.map(p => {
     const categoryLabel = CATEGORY_LABELS[p.category] || p.category;
-    const langBadges = p.language_labels
-      .map(l => `<span class="gp-lang-badge">${l}</span>`)
+    const badgeClass    = BADGE_CLASS[p.category] || '';
+    const langBadges    = p.language_labels
+      .map(l => `<span class="gp-lang ${LANG_CLASS[l] || ''}">${l}</span>`)
       .join('');
 
     return `
@@ -27,14 +44,12 @@ function renderProjects(projects) {
         data-category="${p.category}"
         data-languages="${p.languages.join(',')}"
       >
-        <div class="gp-project-card-top">
-          <span class="gp-category-badge gp-category-badge--${p.category}">${categoryLabel}</span>
+        <div class="gp-project-card-header">
+          <span class="gp-badge ${badgeClass}">${categoryLabel}</span>
         </div>
-        <div class="gp-project-card-body">
-          <h3 class="gp-card-title">${p.title}</h3>
-          <p class="gp-card-description">${p.description}</p>
-        </div>
-        <div class="gp-lang-badges">${langBadges}</div>
+        <h3 class="gp-project-card-title">${p.title}</h3>
+        <p class="gp-project-card-desc">${p.description}</p>
+        <div class="gp-project-card-langs">${langBadges}</div>
         <span class="gp-project-card-link">View on GitHub →</span>
       </a>
     `.trim();
@@ -43,18 +58,16 @@ function renderProjects(projects) {
 
 function initFilters() {
   const buttons = document.querySelectorAll('.gp-filter-button');
-  const grid = document.getElementById('gp-project-grid');
+  const grid    = document.getElementById('gp-project-grid');
   if (!buttons.length || !grid) return;
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
 
-      // Update active state
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      // Show / hide cards
       grid.querySelectorAll('.gp-project-card').forEach(card => {
         const match = filter === 'all' || card.dataset.category === filter;
         card.classList.toggle('gp-hidden', !match);
@@ -63,7 +76,7 @@ function initFilters() {
   });
 }
 
-// Run immediately since script loads at end of </body> (DOM is ready)
+// Run immediately — script loads at end of </body> so DOM is ready
 if (typeof GP_PROJECTS !== 'undefined') {
   renderProjects(GP_PROJECTS);
   initFilters();
