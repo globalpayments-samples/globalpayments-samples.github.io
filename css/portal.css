@@ -178,7 +178,7 @@
     transform: translateY(-2px);
 }
 
-.gp-project-card.hidden {
+.gp-project-card.gp-hidden {
     display: none;
 }
 
