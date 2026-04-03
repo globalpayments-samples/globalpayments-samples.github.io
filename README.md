@@ -15,18 +15,24 @@ This site also serves brand assets consumed by every sample project in the org. 
 | Favicon SVG | `/assets/img/GP_favicon.svg` | Favicon for all projects |
 | Dev brand icon | `/assets/img/g-symbol-dev-brand.png` | CodeSandbox `template.json` entries |
 | 3DS JS | `/js/globalpayments-3ds.js` | gpecom-3ds2 project |
-| Template JS | `/js/script.js` | Legacy payment form template (kept for backward compatibility) |
 
 ### Safe to Modify
 
 - `index.html` — The portal page itself
 - `css/portal.css` — Portal-specific styles (does not affect sample projects)
-- `js/portal.js` — Portal-specific JavaScript
+- `js/portal.js` — Portal-specific JavaScript (mobile nav, count display)
+- `js/script.js` — Portal render and filter logic (`renderProjects`, `initFilters`)
+- `js/projects.js` — Project dataset powering the card grid (add/update entries here)
 - `README.md` — This file
 
 ## Local Development
 
-Open `index.html` in a browser. No build step required.
+Serve with any static file server — no build step required:
+
+```bash
+python3 -m http.server 8000
+# → http://localhost:8000
+```
 
 ## Content Source
 
