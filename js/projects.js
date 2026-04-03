@@ -1,5 +1,4 @@
 const GP_PROJECTS = [
-  // ── GP-API ───────────────────────────────────────────────────────────────
   {
     title: "Online Card Payments",
     repo_name: "online-card-payments",
@@ -130,7 +129,6 @@ const GP_PROJECTS = [
     language_labels: ["PHP", "Node.js", "Java", ".NET"],
     feature_tags: ["fee-splitting"]
   },
-  // ── Portico ──────────────────────────────────────────────────────────────
   {
     title: "Online Card Payments",
     repo_name: "portico-online-card-payments",
@@ -201,7 +199,6 @@ const GP_PROJECTS = [
     language_labels: ["PHP", "Node.js", "Java", ".NET"],
     feature_tags: ["recurring"]
   },
-  // ── GP Ecom ──────────────────────────────────────────────────────────────
   {
     title: "Online Recurring Payments",
     repo_name: "gpecom-online-recurring-payments",
@@ -222,7 +219,6 @@ const GP_PROJECTS = [
     language_labels: ["PHP", "Node.js", "Java", ".NET", "Python"],
     feature_tags: ["3ds"]
   },
-  // ── Tools ─────────────────────────────────────────────────────────────────
   {
     title: "Basic Refund Tool",
     repo_name: "basic-refund-tool",
