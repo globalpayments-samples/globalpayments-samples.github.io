@@ -11,7 +11,7 @@
     }
   }
 
-  // Hook into filter clicks to keep count in sync
+  // Hook into filter clicks to keep count in sync (cards loaded async by script.js)
   document.querySelectorAll('.gp-filter-button').forEach(function (btn) {
     btn.addEventListener('click', function () {
       setTimeout(function () {
@@ -21,10 +21,6 @@
       }, 0);
     });
   });
-
-  // Set initial count after cards are rendered
-  var all = document.querySelectorAll('.gp-project-card');
-  updateCount(all.length, all.length);
 
   // Mobile nav toggle
   var toggle = document.querySelector('.gp-mobile-menu-toggle');
