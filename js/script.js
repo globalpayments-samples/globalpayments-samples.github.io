@@ -97,13 +97,13 @@ function renderProjects(projects) {
   if (!grid) return;
 
   grid.innerHTML = projects.map(p => {
-    const categoryLabel = CATEGORY_LABELS[p.category] || p.category;
-    const badgeClass    = BADGE_CLASS[p.category] || '';
+    const categoryLabel = encodeEntities(CATEGORY_LABELS[p.category] || p.category);
+    const badgeClass    = encodeEntities(BADGE_CLASS[p.category] || '');
     const langBadges    = p.language_labels
-      .map(l => `<span class="gp-lang ${LANG_CLASS[l] || ''}">${l}</span>`)
+      .map(l => `<span class="gp-lang ${encodeEntities(LANG_CLASS[l] || '')}">${encodeEntities(l)}</span>`)
       .join('');
     const tagBadges     = p.tags
-      .map(t => `<span class="gp-tag">${t}</span>`)
+      .map(t => `<span class="gp-tag">${encodeEntities(t)}</span>`)
       .join('');
 
     return `
@@ -112,19 +112,35 @@ function renderProjects(projects) {
         href="${p.url}"
         target="_blank"
         rel="noopener noreferrer"
-        data-category="${p.category}"
+        data-category="${encodeEntities(p.category)}"
       >
         <div class="gp-project-card-header">
           <span class="gp-badge ${badgeClass}">${categoryLabel}</span>
         </div>
-        <h3 class="gp-project-card-title">${p.title}</h3>
-        <p class="gp-project-card-desc">${p.description}</p>
+        <h3 class="gp-project-card-title">${encodeEntities(p.title)}</h3>
+        <p class="gp-project-card-desc">${encodeEntities(p.description)}</p>
         ${langBadges ? `<div class="gp-project-card-langs">${langBadges}</div>` : ''}
         ${tagBadges  ? `<div class="gp-project-card-tags">${tagBadges}</div>`  : ''}
         <span class="gp-project-card-link">View on GitHub \u2192</span>
       </a>
     `.trim();
   }).join('');
+}
+
+/**
+ * Escapes all potentially dangerous characters, so that the
+ * resulting string can be safely inserted into attribute or
+ * element text.
+ *
+ * @param value
+ * @returns escaped text
+ */
+function encodeEntities(value) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function initFilters() {
