@@ -232,6 +232,11 @@
     color: #047857;
 }
 
+.gp-badge-integrated-partner {
+    background: rgba(14, 165, 233, 0.1);
+    color: #0369a1;
+}
+
 /* ===== Language Tags ===== */
 .gp-project-card-langs {
     display: flex;
@@ -291,6 +296,32 @@
 
 .gp-project-card:hover .gp-project-card-link {
     text-decoration: underline;
+}
+
+/* ===== Topic Tags ===== */
+.gp-project-card-tags {
+    display: flex;
+    gap: var(--gp-space-xs);
+    flex-wrap: wrap;
+    margin-top: var(--gp-space-xs);
+}
+
+.gp-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: var(--gp-radius-sm);
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--gp-text-secondary, #6b7280);
+    letter-spacing: 0.02em;
+}
+
+/* ===== Loading State ===== */
+.gp-loading {
+    text-align: center;
+    padding: var(--gp-space-xl) 0;
+    color: var(--gp-text-secondary, #6b7280);
+    font-size: 0.95rem;
 }
 
 /* ===== Features Grid ===== */
