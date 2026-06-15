@@ -36,6 +36,11 @@ const BADGE_CLASS = {
   'tools':              'gp-badge-tools',
 };
 
+const EXCLUDED_TAGS = new Set([
+  'gp-api', 'portico', 'gpecom', 'gp-ecom', 'integrated-partner',
+  'global-payments', 'globalpayments',
+]);
+
 const LANG_CLASS = {
   'PHP':     'gp-lang-php',
   'Node.js': 'gp-lang-node',
@@ -106,6 +111,8 @@ function renderProjects(projects) {
       .map(t => `<span class="gp-tag">${encodeEntities(t)}</span>`)
       .join('');
 
+    const dataTags = encodeEntities(p.tags.join(','));
+
     return `
       <a
         class="gp-project-card"
@@ -113,6 +120,7 @@ function renderProjects(projects) {
         target="_blank"
         rel="noopener noreferrer"
         data-category="${encodeEntities(p.category)}"
+        data-tags="${dataTags}"
       >
         <div class="gp-project-card-header">
           <span class="gp-badge ${badgeClass}">${categoryLabel}</span>
@@ -143,6 +151,40 @@ function encodeEntities(value) {
     .replace(/"/g, "&quot;");
 }
 
+function tagToLabel(tag) {
+  const WORD_MAP = {
+    gp: 'GP', api: 'API', '3ds': '3DS', '3ds2': '3DS2', ach: 'ACH',
+    php: 'PHP', ui: 'UI', and: '&',
+  };
+  return tag
+    .split('-')
+    .map(w => WORD_MAP[w.toLowerCase()] || (w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ');
+}
+
+function renderFilterButtons(projects) {
+  const container = document.querySelector('.gp-filters');
+  if (!container) return;
+
+  const tagCounts = new Map();
+  projects.forEach(p => p.tags.forEach(t => {
+    if (!EXCLUDED_TAGS.has(t)) tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
+  }));
+
+  const sorted = [...tagCounts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 15)
+    .map(([tag]) => tag)
+    .sort((a, b) => a.localeCompare(b));
+  sorted.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.className = 'gp-filter-button';
+    btn.dataset.filter = tag;
+    btn.textContent = tagToLabel(tag);
+    container.appendChild(btn);
+  });
+}
+
 function initFilters() {
   const buttons = document.querySelectorAll('.gp-filter-button');
   const grid    = document.getElementById('gp-project-grid');
@@ -154,7 +196,8 @@ function initFilters() {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       grid.querySelectorAll('.gp-project-card').forEach(card => {
-        const match = filter === 'all' || card.dataset.category === filter;
+        const tags = card.dataset.tags ? card.dataset.tags.split(',') : [];
+        const match = filter === 'all' || tags.includes(filter);
         card.classList.toggle('gp-hidden', !match);
       });
     });
@@ -182,6 +225,7 @@ async function loadAndRender() {
       .map(mapRepo);
 
     renderProjects(projects);
+    renderFilterButtons(projects);
     initFilters();
     updateCount();
   } catch (err) {
