@@ -40,26 +40,8 @@
             <h1 class="gp-hero-title">Global Payments Samples</h1>
             <p class="gp-hero-subtitle">Integration samples and examples for Global Payments API Platform, organized by programming language and complexity level.</p>
             <div class="gp-hero-actions">
-                <a href="https://developer.globalpay.com/docs/getting-started/overview" class="gp-button gp-button-primary">Get Started</a>
-                <a href="#samples" class="gp-button gp-button-secondary">Browse Samples</a>
+                <a href="https://developer.globalpay.com/docs/getting-started/overview" class="gp-button gp-button-primary gp-hero-cta">Get Started</a>
             </div>
-        </div>
-    </section>
-
-    <section id="samples" class="gp-section">
-        <div class="gp-container">
-            <div class="gp-section-header">
-                <h2 class="gp-section-title">Integration Samples</h2>
-                <p class="gp-section-subtitle">Production-ready examples with multi-language backends, Docker support, and one-click cloud previews.</p>
-            </div>
-
-            <div class="gp-filters">
-                <button class="gp-filter-button active" data-filter="all">All</button>
-            </div>
-
-            <div id="gp-project-grid" class="gp-project-grid"></div>
-
-            <p class="gp-project-count" id="project-count"></p>
         </div>
     </section>
 
@@ -67,6 +49,7 @@
         <div class="gp-container">
             <div class="gp-section-header">
                 <h2 class="gp-section-title">Every Sample Includes</h2>
+                <p class="gp-section-subtitle">Whichever sample you pick below, you get the same production-ready foundation.</p>
             </div>
             <div class="gp-features-grid">
                 <div class="gp-feature-card">
@@ -93,7 +76,33 @@
         </div>
     </section>
 
-    <section class="gp-section">
+    <section id="samples" class="gp-section">
+        <div class="gp-container">
+            <div class="gp-section-header">
+                <h2 class="gp-section-title">Integration Samples</h2>
+                <p class="gp-section-subtitle">Production-ready examples with multi-language backends, Docker support, and one-click cloud previews.</p>
+            </div>
+
+            <div class="gp-search">
+                <input
+                    type="search"
+                    id="gp-search-input"
+                    class="gp-search-input"
+                    placeholder="Search samples by name, use case, API, or language&#x2026;"
+                    aria-label="Search samples"
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="gp-filters" role="group" aria-label="Filter samples by use case"></div>
+
+            <div id="gp-project-grid" class="gp-project-grid"></div>
+
+            <p class="gp-project-count" id="project-count"></p>
+        </div>
+    </section>
+
+    <section class="gp-section gp-section-alt">
         <div class="gp-container">
             <div class="gp-section-header">
                 <h2 class="gp-section-title">Developer Community</h2>
