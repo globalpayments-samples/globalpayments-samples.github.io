@@ -95,6 +95,9 @@ const DEFAULT_FILTER = 'recommended';
 // Filter/search state, applied together against the rendered cards.
 let activeFilter = DEFAULT_FILTER;
 let searchQuery  = '';
+// The filter that was active before a search widened the view to "View All",
+// so it can be restored when the search box is cleared.
+let filterBeforeSearch = null;
 
 const BADGE_CLASS = {
   'gp-api':             'gp-badge-gpapi',
@@ -199,7 +202,6 @@ function renderProjects(projects) {
       .map(t => `<span class="gp-tag">${encodeEntities(t)}</span>`)
       .join('');
 
-    const dataTags     = encodeEntities(p.tags.join(','));
     const dataGroups   = encodeEntities(p.groups.join(','));
     const dataSearch   = encodeEntities(p.search);
     const platformText = encodeEntities(PLATFORM_CAPTION[p.category] || '');
@@ -207,11 +209,10 @@ function renderProjects(projects) {
     return `
       <a
         class="gp-project-card"
-        href="${p.url}"
+        href="${encodeEntities(p.url)}"
         target="_blank"
         rel="noopener noreferrer"
         data-category="${encodeEntities(p.category)}"
-        data-tags="${dataTags}"
         data-groups="${dataGroups}"
         data-search="${dataSearch}"
       >
@@ -269,8 +270,10 @@ function renderFilterButtons(projects) {
   container.innerHTML = '';
   buttons.forEach(({ id, label }) => {
     const btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'gp-filter-button' + (id === activeFilter ? ' active' : '');
     btn.dataset.filter = id;
+    btn.setAttribute('aria-pressed', String(id === activeFilter));
     btn.textContent = label;
     container.appendChild(btn);
   });
@@ -296,7 +299,9 @@ function applyFilters() {
 function setActiveFilter(id) {
   activeFilter = id;
   document.querySelectorAll('.gp-filter-button').forEach(b => {
-    b.classList.toggle('active', b.dataset.filter === id);
+    const isActive = b.dataset.filter === id;
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-pressed', String(isActive));
   });
 }
 
@@ -308,6 +313,9 @@ function initFilters() {
   container.addEventListener('click', e => {
     const btn = e.target.closest('.gp-filter-button');
     if (!btn) return;
+    // An explicit filter choice supersedes any filter remembered from before a
+    // search, so clearing the search later won't override this selection.
+    filterBeforeSearch = null;
     setActiveFilter(btn.dataset.filter);
     applyFilters();
   });
@@ -316,10 +324,20 @@ function initFilters() {
   if (search) {
     search.addEventListener('input', () => {
       searchQuery = search.value.trim().toLowerCase();
-      // Searching spans every sample, so widen the view to "View All" the moment
-      // the user starts typing — otherwise a query could hide behind the
-      // Recommended filter and appear to return nothing.
-      if (searchQuery && activeFilter !== 'all') setActiveFilter('all');
+      if (searchQuery) {
+        // Searching spans every sample, so widen the view to "View All" the
+        // moment the user starts typing — otherwise a query could hide behind
+        // the Recommended filter and appear to return nothing. Remember the
+        // filter we came from so it can be restored when the search is cleared.
+        if (activeFilter !== 'all') {
+          filterBeforeSearch = activeFilter;
+          setActiveFilter('all');
+        }
+      } else if (filterBeforeSearch !== null) {
+        // Search cleared — return to the filter that was active before searching.
+        setActiveFilter(filterBeforeSearch);
+        filterBeforeSearch = null;
+      }
       applyFilters();
     });
   }

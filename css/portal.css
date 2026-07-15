@@ -46,18 +46,6 @@
     box-shadow: var(--gp-shadow-lg);
 }
 
-.gp-hero .gp-button-secondary {
-    background: transparent;
-    color: var(--gp-white);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-.gp-hero .gp-button-secondary:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--gp-white);
-    color: var(--gp-white);
-}
-
 /* ===== Header (portal overrides) ===== */
 .gp-header {
     padding: 0;
