@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Coverage — Global Payments</title>
+<meta name="description" content="Which Global Payments products have a runnable code sample, in which languages, on which gateway — and where the gaps are.">
+<link rel="icon" href="assets/img/GP_favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<a class="skiplink" href="#matrix-title">Skip to the coverage table</a>
+
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="masthead__logo" href="https://globalpayments-samples.github.io/">
+      <img class="masthead__logo-screen" src="assets/img/GP_logo.svg" alt="Global Payments">
+      <img class="masthead__logo-print" src="assets/img/GP_logo_print.svg" alt="" aria-hidden="true">
+    </a>
+    <nav class="masthead__nav" aria-label="Developer resources">
+      <a href="https://developer.globalpayments.com/">Docs</a>
+      <a href="https://developer.globalpayments.com/api/references-overview">API Reference</a>
+      <a href="https://github.com/globalpayments-samples">Sample repositories</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Shown only when data/coverage.js is missing. -->
+<div class="shell" id="load-error" hidden>
+  <div class="section">
+    <div class="notice">
+      <strong>Coverage data has not been generated yet.</strong>
+      Run the pipeline from the project root, then reload this page:
+      <br><br>
+      <code>node scripts/fetch-docs.mjs</code><br>
+      <code>node scripts/fetch-repos.mjs</code><br>
+      <code>node scripts/build-coverage.mjs</code>
+      <br><br>
+      The last step writes <code>data/coverage.js</code>, which this page reads.
+    </div>
+  </div>
+</div>
+
+<main id="app" hidden>
+
+  <!-- Live region for filter and search results. Sighted users get the same
+       sentence in .matrix__status; this exists so the change is not silent. -->
+  <p class="sr-only" id="status" role="status" aria-live="polite"></p>
+
+  <section class="shell lede" aria-labelledby="page-title">
+    <div class="lede__grid">
+      <div>
+        <h1 class="lede__title" id="page-title">Where our code samples cover — and where they don&rsquo;t</h1>
+        <p class="lede__lead" id="lead">
+          When a developer opens the docs for a Global Payments product, is there a
+          working example they can download and run? For most products, no. This page
+          says exactly which ones, in which language, on which gateway.
+        </p>
+
+        <div class="headline">
+          <p class="headline__figure" id="coverage-figure">—</p>
+          <div class="headline__read">
+            <p class="headline__band" id="coverage-band"></p>
+            <p class="headline__caption" id="coverage-caption"></p>
+          </div>
+        </div>
+
+        <p class="lede__statement" id="statement"></p>
+      </div>
+
+      <div class="lede__evidence">
+        <ul class="strip" id="strip" aria-hidden="true"></ul>
+        <p class="strip__caption" id="strip-caption"></p>
+      </div>
+    </div>
+
+    <div class="facts" id="facts"></div>
+  </section>
+
+  <div class="controls">
+    <div class="shell controls__inner">
+      <div class="control">
+        <span class="control__label" id="gateway-label">Gateway</span>
+        <div class="segmented" id="gateway-filter" role="group" aria-labelledby="gateway-label"></div>
+      </div>
+
+      <div class="control">
+        <label class="sr-only" for="search">Filter products by name</label>
+        <input class="search" id="search" type="search" placeholder="Filter products&hellip;" autocomplete="off">
+      </div>
+
+      <label class="toggle">
+        <input type="checkbox" id="show-out-of-scope">
+        <span>Also show reference pages</span>
+      </label>
+
+      <button class="btn" id="copy-summary" type="button"
+              aria-describedby="copy-summary-hint">Copy summary</button>
+      <span class="sr-only" id="copy-summary-hint">Copies this page&rsquo;s headline numbers and top gaps to the clipboard as Markdown.</span>
+    </div>
+  </div>
+
+  <section class="shell section" aria-labelledby="matrix-title">
+    <div class="section__head">
+      <h2 class="section__title" id="matrix-title" tabindex="-1">Every product, every language</h2>
+      <p class="section__note">
+        One row per product documented on the developer portal. One column per SDK
+        language. A square is filled when a sample repository ships that language.
+        Select any row to see its repositories, its documentation and its gateway.
+      </p>
+    </div>
+
+    <!-- The legend sits above the matrix, not below it: you cannot read a chart
+         with the key 1,400px further down the page. Only the states the data
+         actually produces are drawn. -->
+    <div class="legend" id="legend"></div>
+
+    <p class="matrix__status" id="matrix-status" hidden></p>
+
+    <div class="matrix" id="matrix"></div>
+  </section>
+
+  <section class="shell section" aria-labelledby="undoc-title">
+    <div class="section__head">
+      <h2 class="section__title" id="undoc-title">Samples nobody documented</h2>
+      <p class="section__note">
+        These sample projects exist and work, but no page on the developer portal
+        describes the product they demonstrate. Each one is a documentation gap
+        rather than a sample gap — work the docs team owns, not this one.
+      </p>
+    </div>
+    <ul class="plainlist" id="undocumented"></ul>
+  </section>
+
+  <section class="shell section" aria-labelledby="hygiene-title">
+    <div class="section__head">
+      <h2 class="section__title" id="hygiene-title">Repositories that are hard to find</h2>
+      <p class="section__note">
+        A repository with no description and no topics does not show up in GitHub
+        search. Where topics claim a language the repository does not actually ship,
+        the topics are wrong. Both are quick to fix and nobody owns them yet.
+      </p>
+    </div>
+    <ul class="plainlist" id="hygiene"></ul>
+  </section>
+
+  <!-- Last on the page on purpose: the reader leaves holding the action, not the
+       housekeeping. -->
+  <section class="shell section section--close" aria-labelledby="gaps-title">
+    <div class="section__head">
+      <h2 class="section__title" id="gaps-title">What to build next</h2>
+      <p class="section__note" id="gaps-note"></p>
+    </div>
+    <div id="gaps"></div>
+  </section>
+
+</main>
+
+<footer class="colophon-wrap" id="colophon" hidden>
+  <div class="shell colophon">
+    <span id="generated"></span>
+    <span>
+      Products from
+      <a href="https://developer.globalpayments.com/llms.txt">developer.globalpayments.com/llms.txt</a>.
+      Samples from
+      <a href="https://github.com/globalpayments-samples">github.com/globalpayments-samples</a>.
+    </span>
+  </div>
+</footer>
+
+<script src="data/coverage.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

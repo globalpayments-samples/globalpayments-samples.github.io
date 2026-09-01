@@ -1,0 +1,833 @@
+/* ===========================================================================
+   Sample Coverage Dashboard
+   Operate surface. The matrix is the product; everything else defers to it.
+   =========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    font-family: var(--gp-font-family);
+    font-size: var(--text-base);
+    line-height: var(--lead-body);
+    color: var(--ink);
+    background: var(--surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Browser surfaces carry the design too. */
+::selection { background: var(--gp-global-blue); color: var(--gp-white); }
+:root { accent-color: var(--gp-global-blue); caret-color: var(--gp-global-blue); }
+
+* { scrollbar-width: thin; scrollbar-color: var(--gp-smoke) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+    background: var(--gp-smoke);
+    border: 3px solid var(--surface);
+    border-radius: 99px;
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--ink-secondary); }
+
+:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: var(--gp-radius-sm);
+}
+
+a { color: var(--gp-deep-blue); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--gp-global-blue); }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: var(--track-tight); line-height: var(--lead-tight); text-wrap: balance; }
+p { margin: 0; }
+
+.shell { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gp-space-xl); }
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+.skiplink {
+    position: absolute;
+    left: var(--gp-space-md);
+    top: -100%;
+    z-index: 100;
+    padding: 10px 14px;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--gp-radius-md);
+    text-decoration: none;
+}
+.skiplink:focus { top: var(--gp-space-sm); }
+
+.icon { width: 1em; height: 1em; flex: none; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* --------------------------------------------------------------- masthead */
+
+.masthead {
+    background: linear-gradient(135deg, var(--gp-global-blue) 0%, var(--gp-deep-blue) 100%);
+    color: var(--gp-white);
+}
+
+.masthead__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gp-space-lg);
+    min-height: 60px;
+    flex-wrap: wrap;
+}
+
+.masthead__logo { display: flex; align-items: center; padding: var(--gp-space-sm) 0; }
+/* The brand mark is white-on-blue. Print drops the blue, so a dark recolour of the
+   same mark ships alongside it and swaps in under @media print. Each variant owns
+   its own display: giving the shared rule one would outrank them on specificity
+   and render both marks at once. */
+.masthead__logo img { height: 26px; width: auto; }
+.masthead__logo-screen { display: block; }
+.masthead__logo-print { display: none; }
+
+.masthead__nav { display: flex; align-items: center; flex-wrap: wrap; gap: var(--gp-space-md) var(--gp-space-lg); }
+
+.masthead__nav a {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color var(--dur-fast) var(--ease-out);
+}
+.masthead__nav a:hover { color: var(--gp-white); text-decoration: underline; }
+.masthead__nav :focus-visible { box-shadow: 0 0 0 2px var(--gp-deep-blue), 0 0 0 4px var(--gp-white); }
+
+/* ------------------------------------------------------------------- lede */
+
+.lede { padding: var(--gp-space-xxl) 0 var(--gp-space-xl); border-bottom: 1px solid var(--rule); }
+
+.lede__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: var(--gp-space-xxl);
+}
+
+.lede__title {
+    font-size: var(--text-xl);
+    letter-spacing: var(--track-tight);
+    max-width: 20ch;
+}
+
+/* The purpose sentence comes before any number. A reader who has not been told
+   what a "sample" is cannot grade a percentage of them. */
+.lede__lead {
+    margin: var(--gp-space-md) 0 0;
+    max-width: 62ch;
+    font-size: var(--text-md);
+    color: var(--ink);
+}
+
+.lede__statement {
+    margin: var(--gp-space-md) 0 0;
+    max-width: 62ch;
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+}
+.lede__statement strong { color: var(--ink); font-weight: 600; }
+
+.headline {
+    display: flex;
+    align-items: center;
+    gap: var(--gp-space-lg);
+    margin-top: var(--gp-space-xl);
+}
+
+.headline__figure {
+    font-size: var(--text-hero);
+    font-weight: 600;
+    letter-spacing: var(--track-hero);
+    line-height: 1;
+    color: var(--ink);
+}
+/* Graded, not decorated. Colour is a second signal; .headline__band is the first. */
+.headline__figure[data-band='critical'] { color: var(--band-critical); }
+.headline__figure[data-band='behind']   { color: var(--band-behind); }
+.headline__figure[data-band='on-track'] { color: var(--band-on-track); }
+
+.headline__read { min-width: 0; }
+
+.headline__band {
+    font-size: var(--text-micro);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.headline__caption {
+    margin-top: 2px;
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+    max-width: 34ch;
+}
+
+.lede__evidence { min-width: 0; }
+
+/* The block IS the percentage: one square per in-scope product, laid out as a
+   single field so the filled proportion is legible at a glance and from a
+   projector. Same fact as the number, drawn as evidence. */
+.strip {
+    display: grid;
+    grid-template-columns: repeat(11, 24px);
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: end;
+}
+
+.strip__cell {
+    height: 24px;
+    border-radius: 2px;
+    background: var(--gp-fog);
+    transform-origin: bottom;
+    animation: strip-rise var(--dur-slow) var(--ease-out) backwards;
+}
+
+.strip__cell[data-covered='true'] { background: var(--gp-global-blue); }
+.strip__cell[data-target='true'] { box-shadow: 4px 0 0 -1px var(--ink); }
+.strip__cell:hover { outline: 2px solid var(--ink); outline-offset: 1px; }
+
+.strip__caption {
+    margin: var(--gp-space-sm) 0 0;
+    font-size: var(--text-xs);
+    color: var(--ink-secondary);
+    text-align: right;
+    max-width: 34ch;
+    margin-left: auto;
+}
+
+@keyframes strip-rise {
+    from { transform: scaleY(0.15); opacity: 0; }
+    to   { transform: scaleY(1); opacity: 1; }
+}
+
+/* Facts read as a sentence-like rail, not as stat cards. */
+.facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: var(--gp-space-xl) 0 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+}
+
+.facts__item {
+    padding: var(--gp-space-md) var(--gp-space-xl) var(--gp-space-md) 0;
+    margin-right: var(--gp-space-xl);
+    border-right: 1px solid var(--rule);
+}
+.facts__item:last-child { border-right: 0; margin-right: 0; }
+
+.facts__value { font-size: var(--text-lg); font-weight: 600; letter-spacing: var(--track-tight); display: block; }
+.facts__label { font-size: var(--text-xs); color: var(--ink-secondary); display: block; margin-top: 2px; }
+
+/* A flagged number is one somebody has to act on. The rule under it carries that
+   in greyscale and in print; the colour is the second signal, never the only one. */
+.facts__item--flag .facts__value {
+    color: var(--gp-grape);
+    box-shadow: inset 0 -3px 0 -1px currentColor;
+    padding-bottom: 1px;
+}
+
+/* --------------------------------------------------------------- controls */
+
+.controls {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--surface-sunk);
+    border-bottom: 1px solid var(--rule);
+}
+
+.controls__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gp-space-md) var(--gp-space-lg);
+    padding-block: var(--gp-space-sm);
+}
+
+.control { display: flex; align-items: center; gap: var(--gp-space-sm); min-width: 0; }
+
+.control__label {
+    font-size: var(--text-micro);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    flex: none;
+}
+
+.segmented {
+    display: inline-flex;
+    background: var(--gp-white);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--gp-radius-md);
+    padding: 2px;
+    gap: 2px;
+    /* Never let the last option fall off the right edge of a phone. */
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.segmented::-webkit-scrollbar { display: none; }
+
+.segmented__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--ink-secondary);
+    padding: 8px 11px;
+    min-height: 36px;
+    border-radius: calc(var(--gp-radius-md) - 3px);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.segmented__btn:hover { background: var(--gp-haze); color: var(--ink); }
+.segmented__btn[aria-pressed='true'] { background: var(--gp-global-blue); color: var(--ink-on-accent); }
+/* No opacity here: at 0.65 the counts measured 3.0:1 and vanished on a projector. */
+.segmented__btn .count { margin-left: 6px; font-weight: 400; font-variant-numeric: tabular-nums; }
+
+.search {
+    font: inherit;
+    font-size: var(--text-xs);
+    padding: 8px 10px;
+    min-height: 36px;
+    min-width: 200px;
+    color: var(--ink);
+    background: var(--gp-white);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--gp-radius-md);
+    transition: border-color var(--dur-fast) var(--ease-out);
+}
+.search::placeholder { color: var(--ink-secondary); }
+.search:hover { border-color: var(--ink-secondary); }
+
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 0 2px;
+    font-size: var(--text-xs);
+    color: var(--ink-secondary);
+    cursor: pointer;
+    user-select: none;
+}
+.toggle input { margin: 0; width: 16px; height: 16px; flex: none; }
+
+.btn {
+    appearance: none;
+    font: inherit;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    min-height: 36px;
+    color: var(--ink);
+    background: var(--gp-white);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--gp-radius-md);
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.btn:hover { background: var(--gp-haze); border-color: var(--ink-secondary); }
+.btn:active { background: var(--gp-fog); }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+
+/* The label swaps to "Copied as Markdown" on click. Reserving the width stops the
+   toolbar jumping — which it would do live, on a projector. */
+#copy-summary { min-width: 15ch; }
+
+.linkbtn {
+    appearance: none;
+    border: 0;
+    background: none;
+    padding: 3px 2px;
+    min-height: 24px;
+    font: inherit;
+    font-size: inherit;
+    color: var(--gp-deep-blue);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+}
+.linkbtn:hover { color: var(--gp-global-blue); }
+
+/* Coarse pointers get the full 44px target; a mouse keeps the denser toolbar. */
+@media (pointer: coarse) {
+    .segmented__btn, .search, .btn, .toggle { min-height: 44px; }
+    .matrix__row { min-height: 48px; }
+}
+
+/* ----------------------------------------------------------------- section */
+
+.section { padding: var(--gp-space-xxl) 0; border-bottom: 1px solid var(--rule); }
+.section--close { border-bottom: 0; }
+
+.section__head { margin-bottom: var(--gp-space-lg); }
+.section__title { font-size: var(--text-lg); }
+.section__note { margin: var(--gp-space-sm) 0 0; font-size: var(--text-sm); color: var(--ink-secondary); max-width: 74ch; }
+
+/* ------------------------------------------------------------------ legend */
+
+/* Above the matrix, not below it. A key 1,400px past the thing it explains is not
+   a key. Only the states this dataset produces are drawn. */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gp-space-md) var(--gp-space-xl);
+    margin-bottom: var(--gp-space-lg);
+    padding: var(--gp-space-md) 0;
+    border-block: 1px solid var(--rule);
+}
+.legend__item { display: flex; align-items: center; gap: var(--gp-space-sm); }
+.legend__text { display: flex; align-items: baseline; gap: var(--gp-space-sm); flex-wrap: wrap; }
+.legend__text strong { font-size: var(--text-xs); font-weight: 600; }
+.legend__meaning { font-size: var(--text-xs); color: var(--ink-secondary); }
+.legend .cell { width: 26px; height: 16px; flex: none; }
+
+.matrix__status {
+    margin-bottom: var(--gp-space-md);
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+}
+
+/* ------------------------------------------------------------------ matrix */
+
+.matrix { --col-lang: 62px; --col-depth: 72px; --col-name: minmax(0, 1fr); }
+
+.matrix__group + .matrix__group { margin-top: var(--gp-space-xxl); }
+
+/* The section is the unit a manager budgets in, so it carries its own score. */
+.matrix__section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--gp-space-xs) var(--gp-space-lg);
+    padding-bottom: var(--gp-space-sm);
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.matrix__groupname {
+    grid-column: 1;
+    font-size: var(--text-md);
+    font-weight: 600;
+    letter-spacing: var(--track-tight);
+    text-transform: none;
+    color: var(--ink);
+}
+
+.matrix__score {
+    grid-column: 1;
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+}
+.matrix__score strong { font-weight: 600; }
+.matrix__score[data-band='critical'] strong { color: var(--band-critical); }
+.matrix__score[data-band='behind']   strong { color: var(--band-behind); }
+.matrix__score[data-band='on-track'] strong { color: var(--band-on-track); }
+.matrix__score--ref { font-style: italic; }
+
+.matrix__filtered { grid-column: 1; font-size: var(--text-xs); color: var(--ink-secondary); }
+
+/* The strip idea again, at section scale. */
+.ministrip {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: center;
+    gap: 3px;
+    max-width: 220px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.ministrip__cell { width: 12px; height: 12px; border-radius: 2px; background: var(--gp-fog); }
+.ministrip__cell[data-covered='true'] { background: var(--gp-global-blue); }
+
+.matrix__head,
+.matrix__row {
+    display: grid;
+    grid-template-columns: var(--col-name) repeat(4, var(--col-lang)) var(--col-depth);
+    align-items: center;
+    gap: var(--gp-space-sm);
+}
+/* display: contents lets the four cells sit in the parent grid on desktop and
+   become a flex row of labelled chips in the stacked layout, from one DOM. */
+.matrix__cells { display: contents; }
+
+.matrix__head {
+    position: sticky;
+    top: 52px;
+    z-index: 10;
+    background: var(--surface);
+    padding: var(--gp-space-sm) 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--text-micro);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+}
+.matrix__head .matrix__cells > * { text-align: center; }
+.matrix__head-depth { text-align: right; }
+
+.matrix__row {
+    width: 100%;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    padding: 8px 0;
+    min-height: 40px;
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-out);
+}
+.matrix__row:hover { background: var(--surface-sunk); }
+.matrix__row[aria-expanded='true'] { background: var(--surface-sunk); }
+
+.matrix__name {
+    display: flex;
+    align-items: center;
+    gap: var(--gp-space-sm);
+    font-size: var(--text-sm);
+    min-width: 0;
+}
+/* The name shrinks last: the badge beside it gives up its width first. */
+.matrix__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.matrix__chev { flex: none; transition: transform var(--dur-base) var(--ease-out); color: var(--ink-secondary); }
+.matrix__row[aria-expanded='true'] .matrix__chev { transform: rotate(90deg); }
+
+.matrix__docs {
+    font-size: var(--text-micro);
+    color: var(--ink-secondary);
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Cells: hue is never the only difference. Fill, pattern and border all move. */
+.cell {
+    justify-self: center;
+    width: 34px;
+    height: 20px;
+    border-radius: 3px;
+    background: var(--state-missing);
+    /* Charcoal, not smoke: the smoke dash measured 1.74:1 against white, under the
+       3:1 floor for a UI boundary, and disappeared on a projector. */
+    border: 1px dashed var(--gp-charcoal);
+}
+.cell[data-state='covered'] { background: var(--state-covered); border: 1px solid var(--state-covered); }
+.cell[data-state='partial'] {
+    background: linear-gradient(to top, var(--state-partial) 50%, transparent 50%);
+    border: 1px solid var(--state-partial);
+}
+.cell[data-state='stale'] {
+    border: 1px solid var(--state-stale);
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--state-stale) 0 3px,
+        var(--gp-white) 3px 6px
+    );
+}
+.cell[data-state='out-of-scope'] { background: var(--state-out); border: 1px solid var(--rule-strong); }
+
+/* Only visible in the stacked layout, where there are no column headers left. */
+.cell__label {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.depth {
+    justify-self: end;
+    font-size: var(--text-micro);
+    color: var(--ink-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Expanded detail: inline disclosure, never a modal. */
+.detail {
+    padding: var(--gp-space-md) 0 var(--gp-space-lg) 28px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface-sunk);
+}
+
+.detail__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--gp-space-lg); }
+
+.detail__heading {
+    font-size: var(--text-micro);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-secondary);
+    margin-bottom: var(--gp-space-sm);
+}
+
+.detail__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gp-space-sm); }
+.detail__list li { font-size: var(--text-sm); line-height: 1.4; }
+.detail__list a { display: inline-block; padding: 3px 0; }
+.detail__meta { display: block; font-size: var(--text-micro); color: var(--ink-secondary); }
+
+.tag {
+    display: inline-block;
+    font-size: var(--text-micro);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: var(--gp-radius-sm);
+    background: var(--gp-fog);
+    color: var(--ink-secondary);
+}
+.tag[data-gateway='gp-api']  { background: #E5E5FE; color: var(--gp-deep-blue); }
+.tag[data-gateway='portico'] { background: #F3E3F7; color: #6D1180; }
+.tag[data-gateway='gpecom']  { background: #FFF1D6; color: #7A5A00; }
+
+/* ------------------------------------------------------------------- gaps */
+
+/* Grouped by weight, not numbered. The score has two distinct values across 26
+   products, so an ordinal list would invent precision the data does not have. */
+.tier + .tier { margin-top: var(--gp-space-xl); }
+
+.tier__head {
+    padding-bottom: var(--gp-space-sm);
+    border-bottom: 1px solid var(--rule-strong);
+}
+.tier__title { font-size: var(--text-md); }
+.tier__note { margin-top: var(--gp-space-xs); font-size: var(--text-sm); color: var(--ink-secondary); max-width: 74ch; }
+
+.tier__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0 var(--gp-space-xl);
+}
+.tier__item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--gp-space-md);
+    padding: var(--gp-space-sm) 0;
+    border-bottom: 1px solid var(--rule);
+}
+.tier__name { font-size: var(--text-sm); font-weight: 500; }
+.tier__where { font-size: var(--text-xs); color: var(--ink-secondary); white-space: nowrap; }
+
+/* ------------------------------------------------------------------ lists */
+
+.plainlist { list-style: none; margin: 0; padding: 0; }
+.plainlist li {
+    display: grid;
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    gap: var(--gp-space-md);
+    padding: var(--gp-space-sm) 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: var(--text-sm);
+}
+.plainlist a { display: inline-block; padding: 3px 0; }
+.plainlist .why { color: var(--ink-secondary); }
+
+/* ------------------------------------------------------------ empty/error */
+
+.notice {
+    padding: var(--gp-space-xl);
+    border: 1px dashed var(--rule-strong);
+    border-radius: var(--gp-radius-lg);
+    background: var(--surface-sunk);
+    font-size: var(--text-sm);
+    color: var(--ink-secondary);
+    max-width: 60ch;
+}
+.notice strong { color: var(--ink); display: block; margin-bottom: var(--gp-space-xs); font-size: var(--text-base); }
+.notice code { background: var(--gp-white); border: 1px solid var(--rule); border-radius: var(--gp-radius-sm); padding: 1px 5px; }
+
+.empty { padding: var(--gp-space-xl) 0; display: flex; flex-direction: column; align-items: flex-start; gap: var(--gp-space-md); }
+.empty__title { font-size: var(--text-sm); color: var(--ink-secondary); }
+
+/* ------------------------------------------------------------------ footer */
+
+.colophon {
+    padding: var(--gp-space-xl) 0 var(--gp-space-xxl);
+    border-top: 1px solid var(--rule);
+    font-size: var(--text-xs);
+    color: var(--ink-secondary);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gp-space-md) var(--gp-space-xl);
+    justify-content: space-between;
+}
+.colophon a { display: inline-block; padding: 3px 0; }
+
+/* -------------------------------------------------------------- responsive */
+
+@media (max-width: 1100px) {
+    .lede__grid { grid-template-columns: minmax(0, 1fr); gap: var(--gp-space-xl); }
+    .strip { justify-content: start; }
+    .strip__caption { text-align: left; margin-left: 0; }
+}
+
+@media (max-width: 900px) {
+    .shell { padding: 0 var(--gp-space-lg); }
+    /* The depth column and its trailing spacer both went: an empty 1fr track was
+       taking exactly as much width as the product name. */
+    .matrix { --col-lang: 46px; }
+    .matrix__head,
+    .matrix__row { grid-template-columns: minmax(0, 1fr) repeat(4, var(--col-lang)); }
+    .matrix__head-depth,
+    .matrix__row .depth { display: none; }
+    /* 46px columns cannot carry uppercase tracking: "NODE.JS" overshot by ~2px. */
+    .matrix__head { font-size: 10px; letter-spacing: 0.02em; }
+    .matrix__docs { display: none; }
+    .facts__item { border-right: 0; margin-right: var(--gp-space-lg); }
+    .ministrip { max-width: 140px; }
+}
+
+/* Below this the grid stops working at any column width, so each product becomes
+   a card: full name on one line, four labelled language chips beneath it. */
+@media (max-width: 700px) {
+    .matrix__head { display: none; }
+
+    .matrix__row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--gp-space-sm);
+        padding: var(--gp-space-md) 0;
+        align-items: start;
+    }
+    .matrix__label { white-space: normal; overflow: visible; }
+    .matrix__docs { display: inline; }
+
+    .matrix__cells { display: flex; gap: 6px; }
+    .cell {
+        justify-self: stretch;
+        flex: 1 1 0;
+        width: auto;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cell__label {
+        position: static;
+        width: auto; height: auto;
+        clip-path: none;
+        font-size: var(--text-micro);
+        font-weight: 600;
+        color: var(--ink-secondary);
+    }
+    .cell[data-state='covered'] .cell__label { color: var(--ink-on-accent); }
+
+    .detail { padding-left: 0; }
+    .matrix__section { grid-template-columns: minmax(0, 1fr); }
+    .ministrip { grid-column: 1; grid-row: auto; justify-content: flex-start; max-width: none; margin-top: var(--gp-space-xs); }
+}
+
+@media (max-width: 600px) {
+    :root { --text-hero: 2.75rem; --text-xl: 1.625rem; }
+    /* Wrap rather than scroll: a hidden option nobody can see is worse than two rows. */
+    .segmented { flex-wrap: wrap; overflow-x: visible; }
+    .control { flex-wrap: wrap; }
+    .strip { grid-template-columns: repeat(11, 1fr); }
+    .strip__cell { height: 20px; }
+    .headline { flex-wrap: wrap; gap: var(--gp-space-md); }
+    .plainlist li { grid-template-columns: 1fr; gap: 2px; }
+    .tier__item { flex-direction: column; gap: 0; }
+    .tier__where { white-space: normal; }
+}
+
+/* ------------------------------------------------------------------- print */
+/* This gets used as a leave-behind, so it has to survive Ctrl+P. Every state that
+   carries meaning is forced to print, because "background graphics" is off by
+   default in the print dialog and would otherwise erase four of five states. */
+
+@media print {
+    body { font-size: 10pt; }
+
+    .masthead { background: none; color: var(--ink); border-bottom: 2px solid var(--ink); }
+    .masthead__logo img.masthead__logo-screen { display: none; }
+    .masthead__logo img.masthead__logo-print { display: block; }
+    .masthead__nav, .controls, .btn, .linkbtn { display: none !important; }
+
+    /* Both are taller than a page; forcing avoid on them silently did nothing. */
+    .section { break-inside: auto; padding: 12pt 0; }
+    .matrix__row, .detail, .tier__item, .matrix__section { break-inside: avoid; }
+    .matrix__group { break-inside: auto; }
+    .section__head, .tier__head { break-after: avoid; }
+
+    /* Sticky headers print once and then leave later pages unlabelled. */
+    .matrix__head { position: static; }
+    .controls { position: static; }
+
+    .detail { display: none !important; }
+    .strip__cell { animation: none; }
+
+    .cell,
+    .strip__cell,
+    .ministrip__cell,
+    .facts__item--flag .facts__value,
+    .headline__figure,
+    .matrix__score strong,
+    .tag {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Out of scope has to stay distinguishable from "no sample" on paper. */
+    .cell[data-state='out-of-scope'] { border-style: solid; border-color: var(--gp-charcoal); }
+
+    a[href]::after { content: ''; }
+
+    /* Paper is ~816px wide, which lands inside the small-screen breakpoints. The
+       stacked card layout would waste the page, so the grid is restored here —
+       this block is last, so it wins on source order. */
+    .matrix__head { display: grid; }
+    .matrix__head,
+    .matrix__row { grid-template-columns: minmax(0, 1fr) repeat(4, 46px) 60px; }
+    .matrix__cells { display: contents; }
+    .matrix__head-depth, .matrix__row .depth { display: block; }
+    .matrix__docs { display: inline; }
+    .cell { width: 34px; height: 16px; display: block; flex: none; justify-self: center; }
+    .cell__label { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+    .matrix__section { grid-template-columns: minmax(0, 1fr) auto; }
+    .ministrip { grid-column: 2; grid-row: 1 / span 2; justify-content: flex-end; max-width: 220px; }
+}

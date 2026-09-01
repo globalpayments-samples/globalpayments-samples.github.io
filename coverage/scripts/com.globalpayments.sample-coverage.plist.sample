@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template. launchd needs absolute paths, which differ per machine, so the real plist is
+  generated from this file rather than committed. See README.md, "Refreshing on a schedule".
+    __REPO__  absolute path of this clone (the directory containing coverage/)
+    __HOME__  absolute path of your home directory
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.globalpayments.sample-coverage</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__REPO__/coverage/scripts/refresh.sh</string>
+  </array>
+
+  <!-- Weekday mornings at 09:00. If the Mac is asleep, launchd runs it on wake. -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+    <dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  </array>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/sample-coverage-refresh.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/sample-coverage-refresh.log</string>
+</dict>
+</plist>

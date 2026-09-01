@@ -1,0 +1,1768 @@
+{
+  "generatedAt": "2026-09-01T16:09:02.262Z",
+  "org": "globalpayments-samples",
+  "repoCount": 45,
+  "sampleCount": 35,
+  "excluded": [
+    ".github",
+    "agent-skills",
+    "content-pipeline",
+    "gh-monthly",
+    "globalpayments-cli",
+    "globalpayments-samples.github.io",
+    "gp-hackathon",
+    "gp-os",
+    "knowledge-base",
+    "starter-template"
+  ],
+  "repos": [
+    {
+      "name": ".github",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/.github",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-07-14T13:23:36Z",
+      "primaryLanguage": null,
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "profile"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "3dsecure-with-strong-consumer-authentication",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/3dsecure-with-strong-consumer-authentication",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2025-11-13T15:12:45Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "agent-skills",
+      "description": "Source-grounded agent skills for integrating Global Payments SDKs across eight languages and platforms.",
+      "url": "https://github.com/globalpayments-samples/agent-skills",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-08-30T04:47:25Z",
+      "primaryLanguage": "Python",
+      "topics": [
+        "3d-secure",
+        "agent-skills",
+        "claude-code",
+        "codex",
+        "global-payments",
+        "payment-sdk",
+        "sdk-integration",
+        "skills-sh"
+      ],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        ".agents",
+        ".claude-plugin",
+        ".github",
+        "plugins",
+        "scripts"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "apple-pay-payments",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/apple-pay-payments",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-07-08T20:06:51Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "basic-refund-tool",
+      "description": "Global Payments refund processing tool with multi-language implementations. Process refunds with standardized Global Payments SDK integration and environment-based configuration.",
+      "url": "https://github.com/globalpayments-samples/basic-refund-tool",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T13:23:52Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "global-payments",
+        "payments",
+        "refund",
+        "sdk",
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "content-pipeline",
+      "description": "TEMP",
+      "url": "https://github.com/globalpayments-samples/content-pipeline",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-08-16T03:33:21Z",
+      "primaryLanguage": null,
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "drafts",
+        "ready-for-review",
+        "revised"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "dispute-management",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/dispute-management",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-06-18T19:46:08Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "donation-form-one-time-recurring-payments",
+      "description": "Donation form supporting both one-time and recurring gifts via GP-API. Configurable amounts, donor management, and automated billing schedules.",
+      "url": "https://github.com/globalpayments-samples/donation-form-one-time-recurring-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-26T19:30:34Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "billing",
+        "customer-vault",
+        "donation",
+        "fundraising",
+        "global-payments",
+        "recurring-payments",
+        "gpa-api",
+        "one-time-payments"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "embedded-payments-fee-splitting",
+      "description": "Embedded payment processing with fee-splitting via GP-API. Route funds across sub-merchants and configure split payment rules programmatically.",
+      "url": "https://github.com/globalpayments-samples/embedded-payments-fee-splitting",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-26T19:37:55Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "embedded-payments",
+        "fee-splitting",
+        "global-payments",
+        "gp-api",
+        "marketplace",
+        "revenue-sharing",
+        "platform-payments"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gh-monthly",
+      "description": "Utility to pull issue and pull request metrics",
+      "url": "https://github.com/globalpayments-samples/gh-monthly",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-04-26T02:43:21Z",
+      "primaryLanguage": "Rust",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "docs",
+        "src",
+        "tests"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "globalpayments-cli",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/globalpayments-cli",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-08-18T19:29:45Z",
+      "primaryLanguage": "TypeScript",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "examples",
+        "scripts",
+        "src",
+        "test"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "globalpayments-samples.github.io",
+      "description": "Website to host assets and files for sample projects",
+      "url": "https://github.com/globalpayments-samples/globalpayments-samples.github.io",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-07-30T11:37:10Z",
+      "primaryLanguage": "CSS",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "assets",
+        "css",
+        "js"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "google-pay-payments",
+      "description": "Google Pay integration examples for Global Payments API Platform. Process encrypted mobile wallet payments with secure token handling.",
+      "url": "https://github.com/globalpayments-samples/google-pay-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T11:14:18Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "api-platform",
+        "global-payments",
+        "google-pay",
+        "mobile-payments",
+        "payment-processing",
+        "wallet",
+        "lang-dotnet",
+        "lang-java",
+        "lang-php",
+        "tokenization"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gp-hackathon",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/gp-hackathon",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-07-28T15:48:34Z",
+      "primaryLanguage": "JavaScript",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "bricks",
+        "builder",
+        "catalog-sweep",
+        "component_catalog",
+        "core",
+        "golden",
+        "scaffold",
+        "specs",
+        "studs",
+        "tiles",
+        "tools"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gp-os",
+      "description": "Shared team productivity system for Github Copilot",
+      "url": "https://github.com/globalpayments-samples/gp-os",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-08-30T03:47:37Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        ".agents",
+        "design",
+        "scripts",
+        "skills"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gpapi-3ds2",
+      "description": "3D Secure 2 (EMV 3DS) authentication using GP-API. Covers frictionless and challenge flows with device fingerprinting and ACS redirection.",
+      "url": "https://github.com/globalpayments-samples/gpapi-3ds2",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-28T13:15:07Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "3d-secure",
+        "3ds2",
+        "authentication",
+        "fraud-prevention",
+        "global-payments",
+        "gp-api",
+        "strong-authentication"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gpecom-3ds2",
+      "description": "3D Secure 2 (EMV 3DS) authentication flow using the GP Ecom gateway. Step-up and frictionless challenge scenarios with full cardholder authentication.",
+      "url": "https://github.com/globalpayments-samples/gpecom-3ds2",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-27T15:00:35Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python",
+        "3d-secure",
+        "3ds2",
+        "authentication",
+        "fraud-prevention",
+        "global-payments",
+        "xml",
+        "gpecom"
+      ],
+      "gateway": "gpecom",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        ".vscode",
+        "dotnet",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gpecom-digital-wallets",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/gpecom-digital-wallets",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2025-12-05T11:51:23Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "gpecom",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "gpecom-online-recurring-payments",
+      "description": "Recurring payment setup using the GP Ecom XML gateway. Schedule automated billing with customer and payment profile management.",
+      "url": "https://github.com/globalpayments-samples/gpecom-online-recurring-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T13:48:49Z",
+      "primaryLanguage": "JavaScript",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "automated-payments",
+        "billing",
+        "gateway",
+        "global-payments",
+        "gpecom",
+        "recurring-payments",
+        "subscription",
+        "xml"
+      ],
+      "gateway": "gpecom",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "hpp-links-iframe-redirect",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/hpp-links-iframe-redirect",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-07-02T14:10:10Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "docs",
+        "dotnet",
+        "java",
+        "nodejs",
+        "php",
+        "python",
+        "tests"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "integrated-partner-online-payments-with-hosted-fields-api",
+      "description": "Integrated partner payment flows using GP-API Hosted Fields. Demonstrates multi-merchant, fee-splitting, and partner credential injection patterns.",
+      "url": "https://github.com/globalpayments-samples/integrated-partner-online-payments-with-hosted-fields-api",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-21T13:12:25Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python",
+        "fee-splitting",
+        "hosted-fields",
+        "integrated-partner",
+        "marketplace",
+        "multi-merchant",
+        "partner-payments"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "knowledge-base",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/knowledge-base",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-08-20T13:48:08Z",
+      "primaryLanguage": "Python",
+      "topics": [],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [],
+      "topicLanguages": [],
+      "dirs": [
+        "docs",
+        "src",
+        "tests"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "localized-checkout-experience",
+      "description": "Localized checkout experience powered by GP-API. Serve region-specific payment forms, currencies, and language preferences from a single integration.",
+      "url": "https://github.com/globalpayments-samples/localized-checkout-experience",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-26T19:58:57Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "checkout",
+        "global-payments",
+        "gp-api",
+        "i18n",
+        "localization",
+        "multi-currency",
+        "dynamic-currency",
+        "regional-payments"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "network-tokenization",
+      "description": "Replace card numbers with Visa/Mastercard network tokens using the GP API for secure storage and higher authorization rates.",
+      "url": "https://github.com/globalpayments-samples/network-tokenization",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-15T12:48:23Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "drop-in-ui",
+        "gp-api",
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python",
+        "tokenization",
+        "network-tokenization"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "online-card-payments",
+      "description": "Drop-in payment UI integration examples for Global Payments SDK. Pre-built payment forms with hosted fields tokenization for rapid payment integration.",
+      "url": "https://github.com/globalpayments-samples/online-card-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T11:13:46Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "ecommerce",
+        "global-payments",
+        "hosted-fields",
+        "integration",
+        "payment-form",
+        "payments",
+        "pci-compliant",
+        "sdk",
+        "tokenization",
+        "ui-components",
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "online-check-payments",
+      "description": "ACH/eCheck payment processing examples with Global Payments SDK. Direct bank account processing with routing number validation for electronic check payments.",
+      "url": "https://github.com/globalpayments-samples/online-check-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-26T19:31:00Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "ach-payments",
+        "bank-account",
+        "echeck",
+        "electronic-payments",
+        "global-payments",
+        "payment-processing",
+        "sdk",
+        "validation",
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "online-payments-auth-and-delayed-capture",
+      "description": "Authorization and delayed capture examples for Global Payments. Implement two-step payment processing with auth-only transactions and manual capture.",
+      "url": "https://github.com/globalpayments-samples/online-payments-auth-and-delayed-capture",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T13:45:02Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "ecommerce",
+        "global-payments",
+        "payment-processing",
+        "sdk",
+        "auth-capture",
+        "delayed-capture",
+        "payment-authorization",
+        "two-step-payment",
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        ".github",
+        "dotnet",
+        "java",
+        "nodejs",
+        "php",
+        "tests"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "online-recurring-payments",
+      "description": "Recurring payment and subscription billing examples with Global Payments SDK. Set up automated payment schedules with customer vault integration.",
+      "url": "https://github.com/globalpayments-samples/online-recurring-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T13:49:22Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "automated-payments",
+        "billing",
+        "global-payments",
+        "payment-schedule",
+        "recurring-payments",
+        "saas",
+        "sdk",
+        "subscriptions",
+        "customer-vault",
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "pay-by-link",
+      "description": "Pay by Link implementation for Global Payments API Platform. Create secure payment links for remote transactions with multi-currency support.",
+      "url": "https://github.com/globalpayments-samples/pay-by-link",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-26T19:38:24Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "api-platform",
+        "ecommerce",
+        "global-payments",
+        "multi-currency",
+        "pay-by-link",
+        "payment-links",
+        "payment-processing",
+        "remote-payments",
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "php-payments-and-reporting",
+      "description": "Card authentication and verification with comprehensive reporting using Global Payments SDK. Validate cards without charging, AVS/CVV checks, and transaction reporting with PCI-compliant implementation.",
+      "url": "https://github.com/globalpayments-samples/php-payments-and-reporting",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2025-11-07T16:17:40Z",
+      "primaryLanguage": "PHP",
+      "topics": [
+        "authentication",
+        "avs",
+        "card-verification",
+        "cvv",
+        "global-payments",
+        "pci-compliant",
+        "reporting",
+        "sdk",
+        "transaction-reporting",
+        "lang-php"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [],
+      "topicLanguages": [
+        "php"
+      ],
+      "dirs": [
+        ".codesandbox",
+        ".devcontainer",
+        "api",
+        "docs",
+        "public",
+        "src",
+        "tests"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-apple-pay-payments",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/portico-apple-pay-payments",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-07-08T20:07:00Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-donation-form-one-time-recurring-payments",
+      "description": "Donation form for one-time and recurring contributions via the Portico Gateway. Donor vault, scheduled billing, and flexible amount selection.",
+      "url": "https://github.com/globalpayments-samples/portico-donation-form-one-time-recurring-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-27T14:41:36Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "billing",
+        "customer-vault",
+        "donation",
+        "fundraising",
+        "global-payments",
+        "one-time-payments",
+        "portico",
+        "recurring-payments"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-embedded-payments-fee-splitting",
+      "description": "",
+      "url": "https://github.com/globalpayments-samples/portico-embedded-payments-fee-splitting",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2026-06-16T14:29:01Z",
+      "primaryLanguage": "HTML",
+      "topics": [],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-google-pay-payments",
+      "description": "Google Pay integration examples for Global Payments Portico Gateway. Process Google Pay tokens with Portico-specific implementation with complete payment flow.",
+      "url": "https://github.com/globalpayments-samples/portico-google-pay-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-08-16T03:32:15Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "gateway",
+        "global-payments",
+        "google-pay",
+        "mobile-payments",
+        "payment-processing",
+        "portico",
+        "wallet",
+        "lang-dotnet",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-online-card-payments",
+      "description": "Card payment examples for Global Payments Portico Gateway. Legacy Portico integration with tokenization, validation, and payment processing.",
+      "url": "https://github.com/globalpayments-samples/portico-online-card-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T11:16:08Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "card-payments",
+        "ecommerce",
+        "gateway",
+        "global-payments",
+        "payment-processing",
+        "portico",
+        "sdk",
+        "tokenization",
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        ".github",
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python",
+        "tests"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-online-check-payments",
+      "description": "ACH/eCheck payment processing for Global Payments Portico Gateway. Direct bank account entry with routing number validation and electronic check processing across multiple languages.",
+      "url": "https://github.com/globalpayments-samples/portico-online-check-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-27T15:00:04Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "ach-payments",
+        "bank-account",
+        "echeck",
+        "gateway",
+        "global-payments",
+        "payment-processing",
+        "portico",
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-online-recurring-payments",
+      "description": "Recurring payment setup for Global Payments Portico Gateway. Customer management, payment method storage, and automated billing schedules with Global Payments SDK.",
+      "url": "https://github.com/globalpayments-samples/portico-online-recurring-payments",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T11:15:14Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "automated-payments",
+        "billing",
+        "customer-vault",
+        "gateway",
+        "global-payments",
+        "portico",
+        "recurring-payments",
+        "subscriptions",
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-online-tokenized-check-payments",
+      "description": "Tokenized ACH/eCheck payments for Global Payments Portico Gateway. Secure bank account tokenization with hosted fields and electronic check processing.",
+      "url": "https://github.com/globalpayments-samples/portico-online-tokenized-check-payments",
+      "archived": false,
+      "private": true,
+      "pushedAt": "2025-11-06T15:12:14Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "ach-payments",
+        "bank-account",
+        "echeck",
+        "gateway",
+        "global-payments",
+        "hosted-fields",
+        "portico",
+        "tokenization"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-save-and-reuse-payment-methods",
+      "description": "Vault-based one-click payment system for Global Payments Portico Gateway. Multi-use token creation, payment method management, and streamlined checkout with customer vault integration.",
+      "url": "https://github.com/globalpayments-samples/portico-save-and-reuse-payment-methods",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T11:14:58Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "checkout",
+        "customer-vault",
+        "ecommerce",
+        "global-payments",
+        "one-click-payment",
+        "payment-methods",
+        "portico",
+        "token-management",
+        "stored-payments",
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "portico-wallet-management",
+      "description": "Wallet management for the Portico Gateway. Store and manage payment methods using multi-use tokens with customer data integration.",
+      "url": "https://github.com/globalpayments-samples/portico-wallet-management",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2025-12-05T17:15:37Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "customer-vault",
+        "global-payments",
+        "multi-use-tokens",
+        "payment-methods",
+        "portico",
+        "stored-payments",
+        "tokenization",
+        "wallet-management"
+      ],
+      "gateway": "portico",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "reporting-service",
+      "description": "Transaction reporting and analytics service for Global Payments. Interactive search, filtering, export capabilities (CSV/JSON/XML) with real-time data visualization.",
+      "url": "https://github.com/globalpayments-samples/reporting-service",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-22T11:14:38Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "analytics",
+        "api",
+        "csv",
+        "dashboard",
+        "data-export",
+        "global-payments",
+        "json",
+        "reporting",
+        "transaction-search",
+        "lang-dotnet",
+        "lang-go",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "lang-python"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "dirs": [
+        ".vscode",
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "save-and-reuse-payment-methods",
+      "description": "One-click payment system with Global Payments customer vault. Secure payment method storage, multi-use token creation, and instant checkout.",
+      "url": "https://github.com/globalpayments-samples/save-and-reuse-payment-methods",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-05-26T19:37:44Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "checkout",
+        "customer-vault",
+        "ecommerce",
+        "global-payments",
+        "one-click-payment",
+        "payment-methods",
+        "sdk",
+        "stored-payments",
+        "token-management",
+        "lang-dotnet",
+        "lang-java",
+        "lang-php"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "php"
+      ],
+      "dirs": [
+        "docs",
+        "dotnet",
+        "java",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "starter-template",
+      "description": "Customizable starter template for Global Payments SDK integration. Foundation for payment projects with basic setup, configuration management, and placeholder endpoints.",
+      "url": "https://github.com/globalpayments-samples/starter-template",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-03-26T19:32:34Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "boilerplate",
+        "global-payments",
+        "payment-integration",
+        "sdk",
+        "starter-template"
+      ],
+      "gateway": "gp-api",
+      "isSample": false,
+      "languages": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "topicLanguages": [],
+      "dirs": [
+        "dotnet",
+        "go",
+        "java",
+        "nodejs",
+        "php",
+        "python"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "virtual-terminal",
+      "description": "MOTO virtual terminal on GP-API: agent keyed-entry card payments via globalpayments.js hosted-fields tokenization (SCA/3DS2-exempt), with optional Credential on File. Reference implementations in Node.js, .NET, PHP and Java.",
+      "url": "https://github.com/globalpayments-samples/virtual-terminal",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2026-07-28T15:15:41Z",
+      "primaryLanguage": "CSS",
+      "topics": [
+        "card-payments",
+        "dotnet",
+        "globalpayments",
+        "gp-api",
+        "hosted-fields",
+        "java",
+        "moto",
+        "nodejs",
+        "payments",
+        "pci",
+        "php",
+        "sample-code",
+        "sca",
+        "tokenization",
+        "virtual-terminal",
+        "credential-on-file"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "docs",
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    },
+    {
+      "name": "wallet-management",
+      "description": "Secure wallet management for storing and managing payment methods using multi-use tokens. Store tokenized customer payment information across multiple programming languages.",
+      "url": "https://github.com/globalpayments-samples/wallet-management",
+      "archived": false,
+      "private": false,
+      "pushedAt": "2025-12-05T17:14:39Z",
+      "primaryLanguage": "HTML",
+      "topics": [
+        "lang-dotnet",
+        "lang-java",
+        "lang-nodejs",
+        "lang-php",
+        "customer-vault",
+        "global-payments",
+        "gp-api",
+        "payment-methods",
+        "stored-payments",
+        "tokenization",
+        "wallet-management",
+        "multi-use-tokens"
+      ],
+      "gateway": "gp-api",
+      "isSample": true,
+      "languages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "topicLanguages": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "dirs": [
+        "dotnet",
+        "java",
+        "nodejs",
+        "php"
+      ],
+      "readable": true,
+      "readError": null
+    }
+  ]
+}

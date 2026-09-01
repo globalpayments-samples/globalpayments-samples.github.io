@@ -1,0 +1,128 @@
+{
+  "_readme": [
+    "Hand-curated join between sample repos and documented product nodes.",
+    "Product node ids come from data/products.json (derived from llms.txt).",
+    "A repo with no entry here is reported as 'undocumented' — a sample with no",
+    "matching doc page. That is a real finding, not an error. Never add a bogus",
+    "mapping to silence it."
+  ],
+
+  "scoreableSections": ["Payments", "Risk Management", "Operations & Reporting"],
+
+  "_scoreableSectionsNote": [
+    "Only these sections count toward the coverage percentage. Getting Started,",
+    "Integration Options, API References and Resources are reference material —",
+    "a runnable sample is not the right artifact for 'Country Codes' or",
+    "'Versioning'. They are still rendered in the UI, marked as not scoreable,",
+    "so nothing looks hidden."
+  ],
+
+  "excludeNodes": [
+    "payments/in-store",
+    "payments/online/plugins",
+    "payments/online/api"
+  ],
+
+  "_excludeNodesNote": [
+    "Prefix match against product node ids. These are documented products that this",
+    "team does not own the samples for: in-store terminal integrations belong to the",
+    "terminal SDK stack, and Plugins / direct API are cart-plugin and reference",
+    "territory. Excluding them keeps the gap list a buildable backlog rather than a",
+    "list of other teams' work. They still render in the UI, marked out of scope."
+  ],
+
+  "coverageTarget": null,
+  "_coverageTargetNote": [
+    "How many in-scope products should have a runnable sample. Set a number here and",
+    "the dashboard draws a target line across the strip and reports the shortfall.",
+    "Left null until the team commits to one, because an invented target is worse",
+    "than no target: it grades the work against a number nobody agreed to."
+  ],
+
+  "coverageBands": [
+    { "upTo": 49, "id": "critical", "label": "Critical" },
+    { "upTo": 74, "id": "behind", "label": "Behind" },
+    { "upTo": 100, "id": "on-track", "label": "On track" }
+  ],
+  "_coverageBandsNote": [
+    "Grades the headline percentage so a reader never has to guess whether the",
+    "number is good. Bands are inclusive upper bounds, checked in order."
+  ],
+
+  "languageColumns": ["php", "nodejs", "java", "dotnet"],
+
+  "_languageColumnsNote": [
+    "The four majors. Python and Go folders are still recorded per repo and shown",
+    "in the detail panel, but they are not columns and never affect the score."
+  ],
+
+  "staleAfterDays": 365,
+
+  "repos": {
+    "3dsecure-with-strong-consumer-authentication": [
+      "risk-management/3D-secure/browser-authentication"
+    ],
+    "apple-pay-payments": ["payments/payment-methods/digital-wallets/apple-pay"],
+    "basic-refund-tool": ["payments/manage-payments/refund"],
+    "dispute-management": ["operations/disputes-management"],
+    "donation-form-one-time-recurring-payments": [
+      "payments/recurring/recurring-payments"
+    ],
+    "google-pay-payments": ["payments/payment-methods/digital-wallets/google-pay"],
+    "gpapi-3ds2": ["risk-management/3D-secure/browser-authentication"],
+    "gpecom-3ds2": ["risk-management/3D-secure/browser-authentication"],
+    "gpecom-digital-wallets": [
+      "payments/payment-methods/digital-wallets/apple-pay",
+      "payments/payment-methods/digital-wallets/google-pay"
+    ],
+    "gpecom-online-recurring-payments": ["payments/recurring/recurring-payments"],
+    "hpp-links-iframe-redirect": ["payments/online/hosted-payment-page"],
+    "integrated-partner-online-payments-with-hosted-fields-api": [
+      "payments/online/hosted-fields"
+    ],
+    "localized-checkout-experience": [
+      "payments/payment-methods/dynamic-currency-conversion"
+    ],
+    "network-tokenization": ["payments/tokenization/network-tokenization"],
+    "online-card-payments": ["payments/online/hosted-fields"],
+    "online-payments-auth-and-delayed-capture": ["payments/manage-payments/capture"],
+    "online-recurring-payments": ["payments/recurring/recurring-payments"],
+    "pay-by-link": ["payments/online/pay-by-link"],
+    "php-payments-and-reporting": ["reporting/real-time-reporting"],
+    "portico-apple-pay-payments": [
+      "payments/payment-methods/digital-wallets/apple-pay"
+    ],
+    "portico-donation-form-one-time-recurring-payments": [
+      "payments/recurring/recurring-payments"
+    ],
+    "portico-google-pay-payments": [
+      "payments/payment-methods/digital-wallets/google-pay"
+    ],
+    "portico-online-card-payments": ["payments/online/hosted-fields"],
+    "portico-online-recurring-payments": ["payments/recurring/recurring-payments"],
+    "portico-save-and-reuse-payment-methods": ["payments/tokenization/card-storage"],
+    "portico-wallet-management": ["payments/tokenization/card-storage"],
+    "reporting-service": [
+      "reporting/real-time-reporting",
+      "reporting/settlement-reporting"
+    ],
+    "save-and-reuse-payment-methods": ["payments/tokenization/card-storage"],
+    "virtual-terminal": [
+      "payments/online/hosted-fields",
+      "payments/recurring/credentials-on-file"
+    ],
+    "wallet-management": [
+      "payments/tokenization/card-storage",
+      "payments/tokenization/payment-method-alias"
+    ]
+  },
+
+  "knownUndocumented": {
+    "_note": "Samples we deliberately accept have no doc page yet. Each one is a docs gap to raise, tracked here so it stays visible instead of becoming noise.",
+    "embedded-payments-fee-splitting": "Marketplace / fee splitting has no documented product page",
+    "portico-embedded-payments-fee-splitting": "Marketplace / fee splitting has no documented product page",
+    "online-check-payments": "ACH / eCheck has no documented product page",
+    "portico-online-check-payments": "ACH / eCheck has no documented product page",
+    "portico-online-tokenized-check-payments": "ACH / eCheck has no documented product page"
+  }
+}
