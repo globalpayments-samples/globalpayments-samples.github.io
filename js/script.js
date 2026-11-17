@@ -11,6 +11,7 @@ const SKIP_REPOS = new Set([
   'globalpayments-samples.github.io',
   'gh-monthly',
   'starter-template',
+  'gp-hackathon',
 ]);
 
 // Repo names that belong to the "tools" category
