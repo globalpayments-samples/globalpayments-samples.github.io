@@ -73,7 +73,7 @@ const USE_CASE_GROUPS = [
   ] },
   { id: 'reporting-tools', label: 'Reporting & Tools', tags: [
     'reporting', 'transaction-reporting', 'transaction-search', 'analytics',
-    'dashboard', 'data-export', 'csv', 'json', 'refund',
+    'dashboard', 'data-export', 'csv', 'json', 'refund', 'disputes', 'chargebacks',
   ] },
 ];
 
@@ -134,7 +134,13 @@ function deriveCategory(name) {
   return 'gp-api';
 }
 
+// Names that don't read well when built word by word from the repo name
+const TITLE_OVERRIDES = {
+  'hpp-links-iframe-redirect': 'Hosted Payment Page (iframe & redirect)',
+};
+
 function repoNameToTitle(name) {
+  if (TITLE_OVERRIDES[name]) return TITLE_OVERRIDES[name];
   const WORD_MAP = {
     gp: 'GP', api: 'API', gpapi: 'GP-API', gpecom: 'GP Ecom',
     portico: 'Portico', '3ds2': '3DS2', ach: 'ACH', php: 'PHP', ui: 'UI',
